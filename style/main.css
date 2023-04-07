@@ -1,0 +1,688 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 62.5%; /* 1rem = 10px */
+    overflow-x: hidden;
+  }
+  
+  body {
+    width: 100%;
+    height: auto;
+    line-height: 1.2;
+    font-family: var(--font-primary);
+  }
+  
+  :root {
+    /* COLOR VARIABLES */
+    --color-primary: #c69963;
+    --color-primary-dark: #b28451;
+  
+    --color-secondary: rgb(16, 29, 44);
+  
+    --color-grey-light-1: #f9f7f6;
+    --color-grey-light-2: #aaa;
+  
+    --color-grey-dark-1: #54483a;
+    --color-grey-dark-2: #6d5d4b;
+  
+    /* FONT VARIABLES */
+    --font-primary: "Nunito", sans-serif;
+    --font-display: "Josefin Sans", sans-serif;
+  }
+  img
+  {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  a{
+    text-decoration: none;
+    color:#333
+  }
+  ul{
+    list-style-type: none;
+  }
+  .flex-center
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+  }
+  .container
+  {
+    display: grid;
+    grid-template-columns: 5rem minmax(5rem,1fr) repeat(6,minmax(min-content,20rem)) minmax(5rem,1fr);
+    grid-template-rows: 80vh min-content 40vw repeat(3,min-content);
+    grid-template-areas: "navbar header header header header header realtors realtors realtors"
+                         "navbar . services services services services services services ."
+                         "navbar goals goals goals goals story story story story"
+                         "navbar . homes homes homes homes homes homes ."
+                         "navbar gallery gallery gallery gallery gallery gallery gallery gallery"
+                         "navbar footer footer footer footer footer footer footer footer";
+  }
+  /* NAVBAR */
+.navbar
+{
+    grid-area: navbar;
+    background-color: var(--color-primary);
+}
+.nav-icon
+{
+    width: 3rem;
+    height: .15rem;
+    background-color: #fff;
+    position: relative;
+    margin: 3rem auto;
+}
+.nav-icon::before,
+.nav-icon::after
+{
+    content: '';
+    position: absolute;
+    width: 3rem;
+    height: .15rem;
+    background-color: #fff;
+    top:-1rem;
+}
+.nav-icon::after
+{
+    top: 1rem;
+}
+.hamburger
+{
+    cursor: pointer;
+}
+.hamburger i
+{
+    color: #fff;
+    margin: 10px;
+    transition: .4s;
+}
+.hamburger i:hover
+{
+    color: #333;
+}
+/* NAVBAR */
+
+/* HEADER */
+.header
+{
+    grid-area: header;
+    background:linear-gradient(rgba(16,29,44,.83),rgba(16,29,44,.83)),
+    url('../assets/img/hero.jpeg') no-repeat center center/cover;
+    display: grid;
+    grid-template-rows: minmax(5rem,1fr) 3rem minmax(7rem,min-content) minmax(5rem,1fr) 5rem;
+    justify-items: start;
+    align-content: space-between;
+    align-items: start;
+    padding: 2rem 3rem;
+}
+.header .header-logo
+{
+    height: 100;
+    justify-self: center;
+}
+.header .header-logo img
+{
+    width: 100px;
+    height: auto;
+}
+.header h3
+{
+    font-family: var(--font-primary);
+    font-size: 1.6rem;
+    color: var(--color-primary);
+}
+.header h2
+{
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-grey-light-1);
+    font-size: 3.2rem;
+}
+.header h5 {
+  font-size: 1.5rem;
+  font-family: var(--font-display);
+  color: #d3bcbc;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  align-items: center;
+  grid-gap: 1.5rem;
+  width: 100%;
+}
+
+.header h5::before,
+.header h5::after {
+  content:'';
+  height: 1px;
+  width: 100%;
+  display: block;
+  background: white;
+}
+
+.header button
+{
+  background-color: var(--color-primary-dark);
+  font-weight: 100;
+  font-family: var(--font-display);
+  color: var(--color-grey-light-1);
+  padding: 1.2rem 1.5rem;
+  border: none;
+}
+.header .company-logo
+{
+    display: grid;
+    grid-gap: 3rem;
+    grid-template-columns: repeat(4,minmax(min-content,1fr));
+    justify-items: center;
+}
+.header .company-logo img
+{
+   margin-bottom: 3rem;
+    width: 80%;
+    height: 3rem;
+
+}
+.slide-left
+{
+  animation: slideleft 1s linear forwards;
+  opacity: 0;
+}
+@keyframes slideleft
+{
+  0%
+  {
+    transform: translate(100px);
+    opacity: 0;
+  }
+  100%
+  {
+    transform: translate(0px);
+    opacity: 1;
+  }
+}
+h3.slide-left
+{
+  animation-delay: 1s;
+}
+h2.slide-left
+{
+  animation-delay: 2s;
+}
+.slide-left   
+{
+  animation-delay: 3s;
+}
+/* HEADER */
+
+/* REALTORS */
+  
+.realtors
+  {
+    grid-area: realtors;
+    /* background-color: var(--color-secondary); */
+    color: white;
+    display: grid;
+    align-content: center;
+    grid-row-gap: 3rem;
+    position: relative;
+    background-position: center;
+  }
+.realtors-darkness
+{
+  background:linear-gradient(rgb(19 36 56),rgb(16 29 44));
+}
+.realtors-darkness:hover
+{
+  background:linear-gradient(rgb(0, 18, 41),rgb(16 29 44)) 
+}
+.realtors h1 {
+    justify-self: center;
+}
+.realtorList {
+  display: grid;
+  grid-template-columns: min-content max-content;
+  grid-column-gap: 2rem;
+  grid-row-gap: 4vh;
+  justify-content: center;
+  align-items: center;
+}
+.realtorList img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+}
+/* REALTORS */
+
+/* SERVICES */
+  .services
+  {
+    grid-area: services;
+    /* background-color: orange; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-column-gap: 2rem;
+    grid-row-gap: 8rem;
+    margin: 20rem 0;
+  }
+  .service {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-row-gap: 1rem;
+    grid-column-gap: 2rem;
+    align-content: start;
+}
+.serviceIcon {
+  width: 5rem;
+  height: 5rem;
+  grid-row: 1 / span 2;
+  /* stroke: var(--color-primary); */
+  fill: var(--color-primary);
+  transform: translateY(-1rem);
+}
+.serviceHeading {
+  font-size: 2rem;
+  font-family: var(--font-display);
+}
+.serviceContent {
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+}
+.box
+{
+    padding: 2rem;
+    transition: .4s;
+}
+.box:hover
+{
+    background-color: rgb(250, 218, 157);
+    transform: scale(1.02);
+}
+/* SERVICES */
+
+/* GOALS */
+  .goals
+  {
+  grid-area: goals;
+  background: linear-gradient(rgba(198, 153, 99, 0.5), rgba(198, 153, 99, 0.5)),
+    url("../assets/img/back.jpg");
+  background-size: 100% 100%, cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  position: relative;
+  }
+  .goalsCenter {
+    width: 70%;
+    height: 50%;
+  }
+  
+  .goalsOut {
+    width: 60%;
+    height: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+/* GOALS */
+
+/* STORY */
+  .story
+  {
+    grid-area: story;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 6rem 12rem;
+    background: var(--color-grey-light-1);
+  }
+
+  .story p {
+    font-size: 1.6rem;
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+  }
+  
+  .story h1 {
+    font-size: 3.2rem;
+    font-family: var(--font-primary);
+    color: var(--color-grey-dark-1);
+    margin-bottom: 2rem;
+    font-style: italic;
+    /* font-weight: lighter; */
+  }
+  
+  .story .contentStory {
+    font-size: 1.6rem;
+    font-family: var(--font-primary);
+    color: var(--color-grey-dark-2);
+    margin-bottom: 3rem;
+    font-weight: lighter;
+    line-height: 2.3rem;
+    font-style: italic;
+  }
+  
+  .story h3 {
+    font-size: 1.8rem;
+    font-family: var(--font-display);
+    color: white;
+    font-weight: lighter;
+    /* line-height: 2.3rem; */
+    background: var(--color-primary);
+    justify-self: start;
+    padding: 1.8rem 3rem;
+    cursor: pointer;
+    transition: background 300ms ease-in-out;
+  }
+  
+  .story h3:hover {
+    background: var(--color-primary-dark);
+  }
+/* STORY */
+
+/* HOMES */
+  .homes
+  {
+    grid-area: homes;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-gap: 10rem;
+    margin: 14rem 0;
+  }
+  
+.home {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background: var(--color-grey-light-1);
+  justify-items: center;
+  align-items: center;
+}
+
+.homeImg {
+  grid-column: 1 / span 2;
+  position: relative;
+  margin-bottom: 3.5rem; 
+}
+.darkness
+{
+  background:linear-gradient(rgb(19 36 56),rgb(16 29 44)) 
+}
+.house-01
+{
+  background:url('../assets/img/house-1.jpeg') no-repeat center center/cover;
+}
+.house-02
+{
+  background:url('../assets/img/house-2.jpeg') no-repeat center center/cover;
+}
+.house-03
+{
+  background:url('../assets/img/house-3.jpeg') no-repeat center center/cover;
+}
+.house-04
+{
+  background:url('../assets/img/house-4.jpeg') no-repeat center center/cover;
+}
+.house-05
+{
+  background:url('../assets/img/house-5.jpeg') no-repeat center center/cover;
+}
+.house-06
+{
+  background:url('../assets/img/house-6.jpeg') no-repeat center center/cover;
+}
+.fadeImg
+{
+  border: 1px solid var(--color-secondary);
+  width: 40rem;
+  height: 23rem;
+  transition: opacity 0.4s ease-in-out;
+  opacity: .2;
+}
+.fadeImg:hover
+{
+opacity: 1;
+}
+.homeInfo {
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  font-family: var(--font-display);
+  color: var(--color-grey-dark-2);
+}
+
+.imgCommon {
+  width: 100%;
+}
+
+.contactRealtorBtn {
+  grid-column: 1 / span 2;
+  background: var(--color-primary);
+  justify-self: stretch;
+  align-self: stretch;
+  padding: 1.7rem;
+  font-size: 2rem;
+  font-family: var(--font-display);
+  color: white;
+  margin-top: 2rem;
+}
+
+.heartIcon {
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 3%;
+  right: 4%;
+  fill: white;
+  transition: fill 300ms ease-in-out;
+  cursor: pointer;
+}
+
+.heartIcon:hover {
+  fill: rgba(255, 0, 0, 0.6);
+}
+
+.homeDetailBtn {
+  background: black;
+  color: white;
+  font-size: 1.8rem;
+  font-family: var(--font-display);
+  width: 80%;
+  padding: 1.5rem 0;
+  position: absolute;
+  bottom: -2rem;
+  left: 10%;
+}
+
+.pic {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* HOMES */
+
+/* GALLERY */
+.gallery
+{
+    /* background-color: seagreen; */
+    grid-area: gallery;
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    grid-template-rows: repeat(6,20vh);
+    grid-gap: 1rem;
+    padding: 1.5rem;
+    
+}
+.gal-1
+{
+    /* background-color: rgb(241, 89, 89); */
+    /* background: url('../assets/img/gal-1.jpeg') no-repeat center center/cover; */
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;  
+}
+.gal-2
+{
+    /* background-color: rgb(241, 231, 89);
+    background: url('../assets/img/gal-2.jpeg') no-repeat center center/cover; */
+    grid-column: 3 / span 3;
+    grid-row: 1 / span 3;
+}
+.gal-3
+{
+    /* background-color: rgb(83, 80, 252);
+    background: url('../assets/img/gal-3.jpeg') no-repeat center center/cover; */
+    grid-column: 6 / span 1;
+    grid-row: 1 / span 2;
+}
+.gal-4
+{
+    /* background-color: blueviolet;
+    background: url('../assets/img/gal-4.jpeg') no-repeat center center/cover; */
+    grid-column: 7 / span 2;
+    grid-row: 1 / span 2;
+}
+.gal-5
+{
+    /* background-color: darkgoldenrod;
+    background: url('../assets/img/gal-5.jpeg') no-repeat center center/cover; */
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 3;
+}
+.gal-6
+{
+    /* background-color: darkgreen;
+    background: url('../assets/img/gal-6.jpeg') no-repeat center center/cover; */
+    grid-column: 3 / span 2;
+    grid-row: 4 / span 2;
+}
+.gal-7
+{
+    /* background-color: rgb(140, 250, 140);
+    background: url('../assets/img/gal-7.jpeg') no-repeat center center/cover; */
+    grid-column: 5 / span 1;
+    grid-row: 4 / span 1;
+}
+.gal-8
+{
+    /* background-color: rgb(168, 76, 253);
+    background: url('../assets/img/gal-8.jpeg') no-repeat center center/cover; */
+    grid-column: 6 / span 2;
+    grid-row: 3 / span 2;
+}
+.gal-9
+{
+    /* background-color: rgb(76, 182, 253);
+    background: url('../assets/img/gal-9.jpeg') no-repeat center center/cover; */
+    grid-column: 8 / span 1;
+    grid-row: 3 / span 3;
+}
+.gal-10
+{
+    /* background-color: rgb(253, 228, 0);
+    background: url('../assets/img/gal-10.jpeg') no-repeat center center/cover; */
+    grid-column: 1 / span 1;
+    grid-row: 6 / span 1;
+}
+.gal-11
+{
+    /* background-color: rgb(255, 153, 0);
+    background: url('../assets/img/gal-11.jpeg') no-repeat center center/cover; */
+    grid-column: 2 / span 2;
+    grid-row: 6 / span 1;
+}
+.gal-12
+{
+    /* background-color: rgb(117, 3, 133);
+    background: url('../assets/img/gal-12.jpeg') no-repeat center center/cover; */
+    grid-column: 4 / span 1;
+    grid-row: 6 / span 1;
+}
+.gal-13
+{
+    /* background-color: rgb(76, 0, 255);
+    background: url('../assets/img/gal-13.jpeg') no-repeat center center/cover; */
+    grid-column: 5 / span 3;
+    grid-row: 5 / span 2;
+}
+.gal-14
+{
+    /* background-color: rgb(121, 121, 121);
+    background: url('../assets/img/gal-14.jpeg') no-repeat center center/cover; */
+    grid-column: 8 / span 1;
+    grid-row: 6 / span 1;
+}
+.gal-1,.gal-2,.gal-3,.gal-4,.gal-5,
+.gal-6,.gal-7,.gal-8,.gal-9,.gal-10,
+.gal-11,.gal-12,.gal-13,.gal-14
+{
+  transition: .3s;
+}
+.gal-1:hover,.gal-2:hover,.gal-3:hover,.gal-4:hover,.gal-5:hover,
+.gal-6:hover,.gal-7:hover,.gal-8:hover,.gal-9:hover,.gal-10:hover,
+.gal-11:hover,.gal-12:hover,.gal-13:hover,.gal-14:hover
+{
+  filter: grayscale(90%);
+  transform: scale(1);
+  padding: 5px;
+}
+.gal-3 a img
+{
+  width: 100%;
+  height: 100%;
+}
+/* GALLERY */
+
+/* FOOTER */
+
+.footer {
+  grid-area: footer;
+  background: var(--color-secondary);
+  padding: 3rem;
+
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  color: white;
+  justify-items: center;
+  grid-gap: 3rem;
+  align-items: center;
+}
+
+.listItem {
+    font-size: 1.6rem;
+    font-family: var(--font-primary);
+    font-weight: lighter;
+    /* background: rgba(255,255,255,0.1); */
+    padding: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 2rem;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+}
+
+.listItem:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-0.5rem);
+}
+
+.footer > p {
+    font-size: 1.4rem;
+    color: white;
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+/* FOOTER */
